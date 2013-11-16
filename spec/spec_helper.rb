@@ -21,6 +21,7 @@ class RSpec::Core::Metadata
   end
 end
 
+require 'support/ui'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each do |f|
@@ -41,6 +42,6 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = 'random'
 
-  #config.extend UI
+  config.include UI
   config.include Habits
 end
