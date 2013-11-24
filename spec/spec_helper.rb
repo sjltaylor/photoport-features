@@ -7,7 +7,7 @@
 
 require 'selenium-webdriver'
 require 'capybara/rspec'
-require 'debugger'
+require 'pry'
 
 # capybara/rspec runs some RSpec configuration that assumes it should apply
 # only to examples of type :feature
@@ -26,7 +26,9 @@ require 'support/ui'
 # in spec/support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each do |f|
   pathname = Pathname.new(f)
-  puts "including spec support: #{pathname.relative_path_from(Pathname.new(File.dirname(__FILE__)))}"
+  if ENV['PHOTOPORT_FEATURES_PUTS_REQUIRED_SUPPORT_FILES'] == '1'
+    puts "including spec support: #{pathname.relative_path_from(Pathname.new(File.dirname(__FILE__)))}"
+  end
   require f
 end
 

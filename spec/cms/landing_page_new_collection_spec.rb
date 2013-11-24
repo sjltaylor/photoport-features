@@ -14,4 +14,29 @@ feature 'landing page new collection' do
       ui.photoport.current.photo?
     end
   end
+  scenario 'uploading photos and navigating' do
+    cms.upload_photo('./samples/bushes.jpg')
+    cms.wait_for_photo_to_upload
+
+    ui.photoport.right_handle.click
+    cms.upload_photo('./samples/molehills.jpg')
+    cms.wait_for_photo_to_upload
+
+    ui.photoport.current.should be_photo
+
+    ui.photoport.right_handle.click
+    ui.photoport.upload_panel.should be_visible
+
+    ui.photoport.right_handle.click
+    ui.photoport.current.should be_photo
+
+    ui.photoport.right_handle.click
+    ui.photoport.current.should be_photo
+
+    ui.photoport.left_handle.click
+    ui.photoport.current.should be_photo
+
+    ui.photoport.left_handle.click
+    ui.photoport.upload_panel.should be_visible
+  end
 end

@@ -4,5 +4,6 @@ gem 'rspec'
 gem 'selenium-webdriver'
 gem 'capybara', require: false
 gem 'active_support'
-gem 'debugger'
 gem 'httparty'
+gem 'pry'
+gem 'pry-nav'

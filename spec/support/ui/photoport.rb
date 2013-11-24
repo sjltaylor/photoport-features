@@ -24,6 +24,14 @@ module UI
     def current
       first('.content div').extend(Current)
     end
+
+    def right_handle
+      find('.photoport-handle-right')
+    end
+
+    def left_handle
+      find('.photoport-handle-left')
+    end
   end
 
   def ui.photoport
