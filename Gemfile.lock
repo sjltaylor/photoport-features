@@ -60,6 +60,7 @@ PLATFORMS
 DEPENDENCIES
   active_support
   capybara
+  ffi (>= 1.0.11)
   httparty
   pry
   pry-nav

@@ -22,10 +22,11 @@ module UI
     end
 
     def current
-      first('.content div').extend(Current)
+      first('.photoport-content div').extend(Current)
     end
 
     def right_handle
+      binding.pry
       find('.photoport-handle-right')
     end
 
