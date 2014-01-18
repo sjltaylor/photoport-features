@@ -1,5 +1,6 @@
 module UI
   module Photoport
+
     module UploadPanel
       include Capybara::DSL
       def show_file_input(visible=true)
@@ -22,11 +23,10 @@ module UI
     end
 
     def current
-      first('.photoport-content div').extend(Current)
+      find('.photoport-content .photoport-element.current').extend(Current)
     end
 
     def right_handle
-      binding.pry
       find('.photoport-handle-right')
     end
 

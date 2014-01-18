@@ -28,15 +28,19 @@ feature 'landing page new collection' do
     ui.photoport.upload_panel.should be_visible
 
     ui.photoport.right_handle.click
-    ui.photoport.current.should be_photo
-
-    ui.photoport.right_handle.click
-    ui.photoport.current.should be_photo
-
-    ui.photoport.left_handle.click
-    ui.photoport.current.should be_photo
-
-    ui.photoport.left_handle.click
     ui.photoport.upload_panel.should be_visible
+
+    ui.photoport.left_handle.click
+    ui.photoport.current.should be_photo
+
+    ui.photoport.left_handle.click
+    ui.photoport.current.should be_photo
+
+    previous_current = ui.photoport.current
+
+    ui.photoport.left_handle.click
+    ui.photoport.current.should be_photo
+
+    ui.photoport.current.should == previous_current
   end
 end
