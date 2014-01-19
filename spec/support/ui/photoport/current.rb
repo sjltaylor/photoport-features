@@ -5,10 +5,23 @@ module UI
         background_image_style_regexp = /background-image: url\(http:\/\/.*\/collections\/\d+\/photos\/\d+.jpg\);/
         !!background_image_style_regexp.match(self['style'])
       end
+      def click_hold(duration_in_milliseconds)
+        js = <<-JS
+          var e = document.querySelector('.photoport-element.current');
+          if (!e) throw "Can't find current photoport element";
+          var mousedown = new MouseEvent('mousedown');
+          var mouseup   = new MouseEvent('mouseup');
+          e.dispatchEvent(mousedown);
+          setTimeout(function () {
+            e.dispatchEvent(mouseup);
+          }, #{duration_in_milliseconds});
+        JS
+        driver.execute_script(js)
+      end
     end
 
     def current
-      first('.content div').extend(Current)
+      find('.photoport-element.current').extend(Current)
     end
 
     def right_handle

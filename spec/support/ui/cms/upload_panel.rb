@@ -1,5 +1,5 @@
 module UI
-  module Photoport
+  module Cms
     module UploadPanel
       include Capybara::DSL
       def show_file_input(visible=true)
@@ -11,7 +11,7 @@ module UI
       end
     end
     def upload_panel
-      find(:css, '.photoport-cms-upload-panel').extend(UploadPanel)
+      find(:css, '.photoport-cms-upload-panel', visible: :all).extend(UploadPanel)
     end
   end
 end
