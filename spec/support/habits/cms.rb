@@ -42,7 +42,7 @@ module Habits
       .until do
         !ui.cms.edit_panel || (ui.cms.edit_panel && !ui.cms.edit_panel.visible?)
       end
-      sleep 0.1 # give the ui time to respond
+      sleep 0.3 # give the ui time to respond
     end
   end
 
