@@ -24,6 +24,15 @@ module Habits
       end
     end
 
+    def wait_for_upload_panel_to_animate
+      Selenium::WebDriver::Wait.new(
+        timeout: 10,
+        message: 'upload panel was not displayed')
+      .until do
+        ui.cms.upload_panel.visible?
+      end
+    end
+
     def open_edit
       ui.photoport.current.click_hold(500)
       Selenium::WebDriver::Wait.new(
@@ -42,7 +51,6 @@ module Habits
       .until do
         !ui.cms.edit_panel || (ui.cms.edit_panel && !ui.cms.edit_panel.visible?)
       end
-      sleep 0.3 # give the ui time to respond
     end
   end
 

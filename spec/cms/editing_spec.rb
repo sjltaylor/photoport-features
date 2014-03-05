@@ -17,6 +17,7 @@ feature 'editing' do
     ui.photoport.current.should be_photo
     cms.open_edit
     cms.remove_current
+    cms.wait_for_upload_panel_to_animate
     ui.cms.upload_panel.should be_visible
     ui.photoport.left_handle.click
     ui.cms.upload_panel.should be_visible
