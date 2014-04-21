@@ -7,6 +7,8 @@
 
 require 'selenium-webdriver'
 require 'capybara/rspec'
+require 'httparty'
+require 'pathname'
 require 'pry'
 
 # capybara/rspec runs some RSpec configuration that assumes it should apply
@@ -20,6 +22,7 @@ class RSpec::Core::Metadata
     end
   end
 end
+
 
 require 'support/ui'
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -46,4 +49,8 @@ RSpec.configure do |config|
 
   config.include UI
   config.include Habits
+
+  config.before(:each) do
+    HTTParty.get(Pathname(PHOTOPORT_CMS_FEATURES_TARGET).join('reset').to_s)
+  end
 end

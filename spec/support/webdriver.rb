@@ -3,7 +3,11 @@ Capybara.register_driver :safari do |app|
 end
 
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+  driver = Capybara::Selenium::Driver.new(app, browser: :chrome)
+  window = driver.browser.manage.window
+  window.move_to 0, 0
+  window.maximize
+  driver
 end
 
 Capybara.default_driver = :chrome

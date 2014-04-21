@@ -7,6 +7,10 @@ module UI
     def left_handle
       find('.photoport-handle-left')
     end
+
+    def photos
+      all('.photoport-photo', visible: :all)
+    end
   end
 
   def ui.photoport

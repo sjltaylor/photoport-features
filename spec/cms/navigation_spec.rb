@@ -3,12 +3,10 @@ require 'spec_helper'
 feature 'navigation' do
   background { cms.new_collection }
   scenario 'navigating' do
-    cms.upload_photo('./samples/bushes.jpg')
-    cms.wait_for_photo_to_upload
+    cms.upload_photo
 
     ui.photoport.right_handle.click
-    cms.upload_photo('./samples/molehills.jpg')
-    cms.wait_for_photo_to_upload
+    cms.upload_photo(source: './samples/molehills.jpg')
 
     ui.photoport.current.should be_photo
 

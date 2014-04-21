@@ -2,17 +2,19 @@ module Habits
   module Cms
     extend self
     extend Capybara::DSL
+    extend RSpec::Matchers
     extend UI
 
     def new_collection
-      visit PHOTOPORT_CMS_FEATURES_TARGET_ROOT
+      visit PHOTOPORT_CMS_FEATURES_TARGET
     end
 
-    def upload_photo(filepath)
+    def upload_photo(source: './samples/bushes.jpg', wait_for_photo_to_upload: true)
       upload_panel = ui.cms.upload_panel
       upload_panel.show_file_input
-      upload_panel.attach_file('file', File.expand_path(filepath))
+      upload_panel.attach_file('file', File.expand_path(source))
       upload_panel.show_file_input(false)
+      self.wait_for_photo_to_upload if wait_for_photo_to_upload
     end
 
     def wait_for_photo_to_upload
@@ -51,6 +53,13 @@ module Habits
       .until do
         !ui.cms.edit_panel || (ui.cms.edit_panel && !ui.cms.edit_panel.visible?)
       end
+    end
+
+    def save(email_address: 'email@address.net', password: 'password')
+      ui.should have_css('.identify-view')
+      fill_in 'email', with: email_address
+      fill_in 'password', with: 'password'
+      click_on 'Save'
     end
   end
 
