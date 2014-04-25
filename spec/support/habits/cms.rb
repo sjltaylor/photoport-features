@@ -55,11 +55,11 @@ module Habits
       end
     end
 
-    def save(email_address: 'email@address.net', password: 'password')
+    def identify(email_address: 'email@address.net', password: 'password')
       ui.should have_css('.identify-view')
       fill_in 'email', with: email_address
       fill_in 'password', with: 'password'
-      click_on 'Save'
+      ui.find('.js-identify').click
     end
   end
 

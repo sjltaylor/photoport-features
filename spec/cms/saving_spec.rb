@@ -19,7 +19,7 @@ feature 'saving' do
     ui.cms.should have_save_prompt
     # accept the save prompt
     click_on 'Save'
-    cms.save
+    cms.identify
 
     reload
 

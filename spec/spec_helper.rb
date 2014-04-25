@@ -51,6 +51,6 @@ RSpec.configure do |config|
   config.include Habits
 
   config.before(:each) do
-    HTTParty.get(Pathname(PHOTOPORT_CMS_FEATURES_TARGET).join('reset').to_s)
+    HTTParty.get(Pathname(PHOTOPORT_CMS_FEATURES_TARGET).join('test_hooks/reset').to_s)
   end
 end
