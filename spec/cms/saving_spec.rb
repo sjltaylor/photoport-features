@@ -27,13 +27,27 @@ feature 'saving' do
     ui.photoport.photos.count.should be 1
   end
 
-  scenario 'a stranger tries to save a collection and is prompted to sign in because they are already registered' do
-    # sign up
-    # sign out
-    # create a colleciton
-    # enter email address of the identity previously registered
-    # fill in password
-    # see you are now signed in and the new colleciton has been saved
-    pending
+  scenario 'a returing but unidentified user saves a collection with the wrong password' do
+    click_on "Sign in"
+
+    email_address = 'auser@domain.com'
+
+    cms.identify(email_address: email_address, password: 'password')
+
+    ui.should have_content "Sign out"
+
+    click_on "Sign out"
+
+    click_on "Sign in"
+
+    cms.identify(email_address: email_address, password: 'WRONGPASSWORD')
+
+    ui.should have_content "Wrong password"
+
+    ui.should have_content "Sign in"
+
+    cms.identify(email_address: email_address, password: 'password')
+
+    pending "collection should be in the list"
   end
 end

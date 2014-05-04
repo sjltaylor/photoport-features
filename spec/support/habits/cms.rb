@@ -58,7 +58,7 @@ module Habits
     def identify(email_address: 'email@address.net', password: 'password')
       ui.should have_css('.identify-view')
       fill_in 'email', with: email_address
-      fill_in 'password', with: 'password'
+      fill_in 'password', with: password
       ui.find('.js-identify').click
     end
   end
