@@ -10,6 +10,6 @@ feature 'creating another collection' do
     # sign out
     # sign in
     # see that it shows up in the previous list
-    pending
+    pending 'not implemented'
   end
 end
