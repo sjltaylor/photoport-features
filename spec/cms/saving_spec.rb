@@ -28,6 +28,7 @@ feature 'saving' do
   end
 
   scenario 'a returing but unidentified user saves a collection with the wrong password' do
+
     click_on "Sign in"
 
     email_address = 'auser@domain.com'
@@ -47,6 +48,8 @@ feature 'saving' do
     ui.should have_content "Sign in"
 
     cms.identify(email_address: email_address, password: 'password')
+
+    ui.photoport.should be_visible
 
     pending "collection should be in the list"
   end
